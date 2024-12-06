@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Web Proxy</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      padding: 20px;
+    }
+    input {
+      width: 300px;
+      padding: 10px;
+    }
+    button {
+      padding: 10px 20px;
+      margin-left: 10px;
+    }
+    iframe {
+      width: 90%;
+      height: 80vh;
+      border: none;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Web Proxy</h1>
+  <input type="text" id="urlInput" placeholder="Enter URL here">
+  <button onclick="loadSite()">Go</button>
+  <iframe id="proxyFrame"></iframe>
+
+  <script>
+    function loadSite() {
+      const url = document.getElementById('urlInput').value;
+      if (!url) {
+        alert('Please enter a URL');
+        return;
+      }
+
+      // External proxy server endpoint
+      const proxyServer = "https://www.croxyproxy.com/";
+
+      // Load the proxied URL into the iframe
+      const proxyFrame = document.getElementById('proxyFrame');
+      proxyFrame.src = proxyServer + encodeURIComponent(url);
+    }
+  </script>
+</body>
+</html>
